@@ -1,0 +1,46 @@
+---
+sidebar_position: 2
+---
+
+# Base64 Decoder
+
+This tool lets you decode Base64-encoded text back into its original, human-readable form.
+
+
+
+🛠️ Just paste your Base64 string below, click the button, and see the decoded result instantly.
+
+
+
+
+import TextConverter from '@site/src/components/TextConverter';
+
+
+
+### Base64 Decoder
+
+<TextConverter
+  label="Base64 Decoder"
+  convert={(text) => decodeURIComponent(escape(atob(text)))}
+
+/>
+
+### How it works 
+
+```js
+const decoded = decodeURIComponent(escape(atob("5L2g5aW9")));
+console.log(decoded); // => "你好"
+```
+
+This tool uses JavaScript functions to safely decode a Base64 string into readable text — even if the text includes non-English (Unicode) characters.
+
+Step-by-step:
+
+1. atob(base64)
+  Decodes the Base64 string into a binary (Latin1-encoded) string.
+
+2. escape(...)
+  Converts the binary string into percent-encoded form (like %E4%BD%A0), which simulates a UTF-8 byte sequence.
+
+3. decodeURIComponent(...)
+  Decodes that UTF-8 sequence back into the original Unicode string (e.g. 你好, emoji, etc.).

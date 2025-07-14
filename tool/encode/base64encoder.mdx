@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+---
+
+# Base64 Encoder
+
+This tool helps you encode text to Base64.
+
+Convert string to base64 quickly and safely — even if the text contains non-English (Unicode) characters.
+
+Simply enter your text, click the button, and get the Base64-encoded result instantly — all in your browser with no data sent to any server.
+
+
+import TextConverter from '@site/src/components/TextConverter';
+
+
+
+### Base64 Encoder
+
+<TextConverter
+  label="Base64 Encode"
+  convert={(text) => btoa(unescape(encodeURIComponent(text)))}
+
+/>
+
+### How it works 
+
+```js
+const text = "你好";
+const encoded = btoa(unescape(encodeURIComponent(text)));
+console.log(encoded); // "5L2g5aW9"
+```
+
+
+When you enter text and click button, the tool:
+
+1. Encodes the text as UTF-8 using `encodeURIComponent()`  
+  This ensures non-English characters (like emoji or Chinese) are safely handled.
+
+2. Converts the encoded string to binary form using unescape()  
+  This prepares the text for Base64 conversion by converting percent-encoded bytes to raw characters.
+
+3. Encodes the binary data to Base64 using btoa()
+  The result is a safe, readable Base64 string.
+
+All of this happens instantly in your browser — no server, no network requests.
+
+### What is Base64
+
+Base64 is commonly used to encode binary data (like images or files) or obfuscate plain text for safe transmission in URLs, emails, or JSON. This decoder works entirely in your browser and supports Unicode characters, including emoji and non-Latin scripts.
