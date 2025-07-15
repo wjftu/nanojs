@@ -16,11 +16,11 @@ You can run JavaScript in browsers. Save below html code to a html file, and ope
 </head>
 <body>
   <h1>JavaScript Quick Start</h1>
-  
 
   <script>
     alert("Hello from JavaScript!");
   </script>
+  
 </body>
 </html>
 ```

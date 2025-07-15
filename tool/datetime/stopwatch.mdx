@@ -1,0 +1,78 @@
+---
+sidebar_position: 2
+---
+
+# Stop Watch 
+
+
+A JavaScript Stop Watch Tool.
+
+### How to Use
+
+* Start / Stop: Click the Start button to begin timing. Click the Stop button to pause the stopwatch. You can toggle between starting and stopping as many times as you want, and the stopwatch will keep track of the total elapsed time.
+
+* Record: While the stopwatch is running, click the Record button to save the current elapsed time. Each recorded time will be listed below, so you can keep track of multiple time checkpoints.
+
+* Clear: Click the Clear button to reset the stopwatch and clear all recorded times. This will stop the timer and set everything back to zero.
+
+
+
+import StopWatch from '@site/src/components/StopWatch';
+
+<StopWatch />
+
+### How does it works
+
+Key State Variables
+
+```jsx
+const [isRunning, setIsRunning] = useState(false); // Whether the stopwatch is active
+const [elapsedTime, setElapsedTime] = useState(0); // Total time passed in ms
+const [records, setRecords] = useState([]);        // Saved timestamps
+const intervalRef = useRef(null);                  // Stores the timer ID
+```
+
+useEffect to Start / Stop the Timer 
+
+```jsx
+useEffect(() => {
+  if (isRunning) {
+    const startTime = Date.now() - elapsedTime;
+
+    intervalRef.current = setInterval(() => {
+      setElapsedTime(Date.now() - startTime);
+    }, 10);
+  } else {
+    clearInterval(intervalRef.current);
+  }
+
+  return () => clearInterval(intervalRef.current);
+}, [isRunning]);
+```
+
+
+Start / Stop button toggle isRunning between true and false and trigger useEffect to start and stop timer loop.
+
+When click Start, isRunning becomes true and startTime is recorded, setInterval() starts a loop that updates elapsedTime every 10 ms.
+
+Record button adds current elapsed time to records list.
+
+Clear Button stops the timer and resets time amd records.
+
+```jsx
+const toggleStartStop = () => setIsRunning(prev => !prev);
+
+const recordTime = () => {
+  if (isRunning) {
+    setRecords(prev => [...prev, formatTime(elapsedTime)]);
+  }
+};
+
+const clearTime = () => {
+  setIsRunning(false);
+  setElapsedTime(0);
+  setRecords([]);
+};
+
+```
+

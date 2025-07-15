@@ -2,6 +2,10 @@
 sidebar_position: 1
 ---
 
+# Variable
+
+Variables in JavaScript
+
 ### What are Variables?
 
 Think of variables as named containers for storing data. You can put information into them and then refer to that information later by its name. They are a fundamental concept in programming, allowing you to write flexible and reusable code.
@@ -26,7 +30,7 @@ const c = true
 
 We can reassign a variable that defined by `let` . Here, we first stored "Hello, world!" in the message variable and then updated it with a new value.
 
-```
+```js
 let message = "Hello, world!";
 console.log(message); // Outputs: Hello, world!
 
@@ -70,13 +74,13 @@ let b = false
 
 Null: Represents the intentional absence of any value. It's a value you can assign to a variable to signify it's empty.
 
-```
+```js
 let user = null;
 ```
 
 Undefined: A variable that has been declared but not yet assigned a value has the type undefined.
 
-```
+```js
 let a
 console.log(a); // Outputs: undefined
 ```
