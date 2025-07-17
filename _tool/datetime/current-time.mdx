@@ -1,0 +1,72 @@
+---
+sidebar_position: 1
+---
+
+# Current Time
+
+Show current time and time zone
+
+import CurrentTime from '@site/src/components/CurrentTime';
+
+<CurrentTime />
+
+### How to use 
+
+Just open this page, you will see current time and time zone.
+
+This tool does not call backend API or external API. The time is your system time. The time zone is your system time zone. Most browsers inherit the system's time zone, but some may spoof or override the time zone.
+
+Time is based on your device and may be inaccurate.
+
+### How does it work 
+
+
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+export default function CurrentTime() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const timeString = time.toLocaleTimeString(undefined, {
+    hour12: false,
+    timeZoneName: 'short',
+  });
+
+  return (
+    <div>
+      {timeString}
+    </div>
+  );
+};
+```
+
+This is a very simple React component.
+
+```jsx
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    setTime(new Date());
+  }, 1000);
+}
+```
+
+This hook runs after the component mounts. It calls `setTime(new Data())` every 1 second and triggers re-runder with the new time.
+
+`return () => clearInterval(intervalId);` is cleanup function. It will clear the interval when the component unmounts to prevent memory leaks. 
+
+```jsx
+const timeString = time.toLocaleTimeString(undefined, {
+  hour12: false,
+  timeZoneName: 'short',
+});
+```
+`toLocaleTimeString()` returns something like 13:25:12 GMT+1 , `undefined` uses the browser/system's default locale. `hour12: false` uses 24-hour format (e.g., 13:00). `timeZoneName: 'short'` adds a short time zone string (like GMT+8 or PDT).

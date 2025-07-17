@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Nano JS',
-  tagline: 'Nano JS, a website about JavaScript',
+  tagline: 'Nano JS, dedicated to everything JavaScript',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -57,8 +57,8 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -76,7 +76,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'tool', 
-        path: 'tool',
+        path: '_tool',
         routeBasePath: 'tool',
         sidebarPath: './sidebars.ts',
       },
@@ -85,7 +85,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'algorithm', 
-        path: 'algorithm',
+        path: '_algorithm',
         routeBasePath: 'algorithm',
         sidebarPath: './sidebars.ts',
       },
@@ -94,7 +94,7 @@ const config: Config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'javascript', 
-        path: 'javascript',
+        path: '_javascript',
         routeBasePath: 'javascript',
         sidebarPath: './sidebars.ts',
       },

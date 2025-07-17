@@ -113,6 +113,19 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
+If there is a loop in loop, we can use a label to break or continue specific loop
+
+```js
+outer: for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    console.log(`i=${i}, j=${j}`);
+    if (i === 1 && j === 1) {
+      break outer; // breaks the outer loop 
+    }
+  }
+}
+```
+
 ##### `return`: Exit a function and return a value
 
 ---
