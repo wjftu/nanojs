@@ -1,0 +1,12 @@
+{
+  "label": "Math",
+  "position": 3,
+  "link": {
+    "type": "generated-index"
+  },
+  "collapsed": true,
+  "className": "red",
+  "customProps": {
+    "description": "This description can be used in the swizzled DocCard"
+  }
+}
