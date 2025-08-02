@@ -149,7 +149,10 @@ const config: Config = {
               label: 'Blog',
               to: '/blog',
             },
-
+            {
+              label: 'Gradle Home',
+              href: 'https://gradlehome.com',
+            },
           ],
         },
       ],
