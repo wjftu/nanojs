@@ -1,0 +1,170 @@
+---
+sidebar_position: 10
+---
+
+# AES GCM Encryptor
+
+This tool lets you encrypt and decrypt in AES-GCM.
+
+
+
+import AesGcmEncryptor from '@site/src/components/AesGcmEncryptor';
+
+
+
+### AES GCM Encryption Tool 
+
+<AesGcmEncryptor />
+
+### How to Use AES-GCM Encryption Tool to Send Secret Messages
+
+#### 1. Agree on a Shared Key (Offline)
+Meet your friend offline and generate a random 32-byte key (256-bit). Don't use wechat, QQ, 163 mail or other unsafe APP to send your key. 
+
+Both of you store this securely (e.g., password manager, paper copy).
+
+Example AES key in Base64:
+
+```
+# 16 byte 
+MTIzNDU2Nzg5MGFiY2RlZg==
+
+# 32 byte 
+YWJjZGVmMTIzNDU2Nzg5MEFCQ0RFRistKi88PiwuPy8=
+```
+
+#### 2. Encrypt the Message (Sender)
+
+The sender use this AES-GCM encryption tool to encrypt your message.
+
+Input:
+
+- Shared Key (base64 format, 16 or 32 byte)
+
+- Message text
+
+Output:
+
+Encrypted ciphertext (Base64 encoded)
+
+Send this ciphertext to your friend via email, chat, or any channel (safe even if intercepted). Don't send the key, your friend has already known the key offline.
+
+#### 3. Decrypt the Message (Receiver)
+
+The receiver use this AES-GCM encryption tool to encrypt your message.
+
+Receiver inputs:
+
+- The same Shared Key (base64 format, 16 or 32 byte)
+
+The key must be the same key that used to encrypt message. 
+
+- The Ciphertext received
+
+AES-GCM decrypts it and shows the original message.
+
+
+#### Example
+
+Alice and Bob are two friends who want to chat securely. They don’t trust the internet and APPs.
+
+So, they decide to use AES-GCM Encryption Tool to keep their messages safe.
+
+**Step 1: Agree on a Secret Key (Offline)**
+
+Before using the tool:
+
+Alice and Bob meet in person at a park.
+
+They generate a random 16-byte Base64 key :
+
+```
+MTIzNDU2Nzg5MGFiY2RlZg==
+```
+
+They both write it down safely and promise to keep it secret.
+
+They never send this key online.
+
+This is like agreeing on a shared lock and key before sending letters.
+
+**Step 2: Alice Encrypts a Message**
+
+Later, Alice wants to send Bob:
+
+```
+Hello, Bob. 近排點呀？
+```
+
+But she doesn’t want anyone else to read it.
+
+She opens the AES-GCM Encryption tool:
+
+She enters the shared key in the "Shared Key" field.
+
+She types her message in "Message to Encrypt".
+
+She clicks Encrypt.
+
+The tool scrambles the message into something unreadable, like:
+
+```
+Sw7+XDDPrzDe1FLtK7nSpcjOU3Xlv1fbRIuRwf5Y21s96/vRJyMsKSV106/t/XE118FgCjy68A==
+```
+
+(If you try to use their key to encrypt the same text, the output may be different, because AES-GCM use a random iv to encrypt, each time you will get an different output.)
+
+This ciphertext is safe to send over email, chat, or even post online. Nobody can read it without the secret key. Alice sends the ciphertext to Bob.
+
+**Step 3: Bob Decrypts the Message**
+
+Bob receives the ciphertext:
+
+```
+Sw7+XDDPrzDe1FLtK7nSpcjOU3Xlv1fbRIuRwf5Y21s96/vRJyMsKSV106/t/XE118FgCjy68A==
+```
+
+He opens his AES-GCM Encrytion Tool:
+
+He enters the same shared key that Alice gave him offline.
+
+He pastes the ciphertext into "Ciphertext to Decrypt".
+
+He clicks Decrypt.
+
+The tool instantly turns it back into:
+
+```
+Hello, Bob. 近排點呀？
+```
+
+Now Bob knows what Alice said, and Eve (the hacker) learns nothing.
+
+
+
+
+
+
+### About AES-GCM
+
+
+AES (Advanced Encryption Standard) is a widely trusted algorithm used worldwide to encrypt data. It converts readable information (plaintext) into scrambled data (ciphertext), which cannot be understood without the correct secret key.
+
+GCM (Galois/Counter Mode) is a mode of operation for AES that provides:
+
+- Confidentiality: Your message content is hidden from unauthorized viewers.  
+- Integrity & Authentication: Ensures the ciphertext hasn’t been altered or tampered with.  
+- Efficiency: Fast and suitable for encrypting short or long messages.  
+
+How AES-GCM Works?
+
+1. Shared Key: Both sender and receiver must agree on the same secret key (usually 256 bits = 32 random bytes).
+2. IV (Initialization Vector): A unique, random value is generated for every message. It ensures that even if you encrypt the same message twice, the ciphertext will look different.
+3. Encryption:
+  - The sender combines the plaintext, key, and IV using AES-GCM.
+  - The result is ciphertext that cannot be understood without the key.
+  - The IV is usually sent alongside the ciphertext (not secret).
+4. Decryption:
+  - The receiver uses the same key and extracts the IV from the message.
+  - AES-GCM converts the ciphertext back into readable text (plaintext).
+  - If the ciphertext was modified, decryption will fail.
