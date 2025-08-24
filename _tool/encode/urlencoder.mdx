@@ -1,0 +1,50 @@
+---
+sidebar_position: 3
+---
+
+# Url Encoder
+
+Encode text into URL encoding
+
+
+
+import CommonTool from '@site/src/components/CommonTool';
+
+
+
+### Url Encoder
+
+<CommonTool
+  title="URL Encoder"
+  actionLabel="Encode"
+  process={(input) => encodeURIComponent(input)}
+  placeholder="Enter plain text to convert into URL encoding.."
+/>
+
+
+### How it works 
+
+This tool uses JavaScript functions to safely encode special characters into URL encoding
+
+(e.g., spaces → %20)
+
+```js
+const encoded = "plain%20text";
+const decoded = encodeURIComponent(text);
+console.log(decoded); // "plain text"
+```
+
+Input a url encoded text, click the button to encode text to URL encoding text.
+
+Example:
+
+- Plain text : `?q=url+encoder`  
+- Encoded: `%3Fq%3Durl%2Bencoder`
+
+### What is Url Encoding 
+
+URL encoding, also known as percent-encoding, is a mechanism for converting characters in a URL into a format that can be safely transmitted over the internet and unambiguously understood by web servers and browsers.
+
+URLs are strictly limited to using the ASCII character set. If a URL contains characters outside this set (like `中文, emojis, etc.`) or characters that have a special meaning in a URL (like `?, &, =, #, /, %`), they must be encoded.
+
+An encoded character is represented by a % sign followed by two hexadecimal digits (e.g., %20 for a space, %C3%BC for ü).

@@ -1,0 +1,85 @@
+---
+sidebar_position: 1
+---
+
+# Text Reverser
+
+Flip the text backwards character by character.
+
+
+
+
+
+### Text Reverser
+
+import CommonTool from '@site/src/components/CommonTool';
+
+<CommonTool
+  title="Text Reverser"
+  actionLabel="Reverse"
+  process={(input) => input.split("").reverse().join("")}
+/>
+
+
+
+
+### How it works 
+
+This tool uses JavaScript functions `split`, `reverse` and `join` to reverse a string
+(e.g., spaces → %20)
+
+Example:
+
+- input: `abc`
+- output: `cba`
+
+```js
+const s = "abc";
+const reversed = s.split("").reverse().join("");
+console.log(reversed); // "cba"
+```
+
+
+`split()` method takes a string and divides it into an ordered list of substrings based on a specified separator. It puts these substrings into an array and returns the array.
+
+```js 
+const sentence = "how are you";
+
+console.log(sentence.split(" "));   // Split on each space
+// Output: ['how', 'are', 'you']
+```
+
+The reverse() method reverses an array in place. The first array element becomes the last, and the last array element becomes the first. It changes the original array.
+
+```js
+const words = ['a', 'b', 'c'];
+
+words.reverse();
+console.log(words); // ['c', 'b', 'a']
+```
+
+The join() method creates and returns a new string by concatenating all of the elements in an array, separated by a specified separator string.
+
+```js
+const words = ['fox', 'brown', 'quick', 'The'];
+
+console.log(words.join());      // No separator (defaults to comma)
+// Output: "fox,brown,quick,The"
+
+console.log(words.join(''));    // Empty string separator (no space)
+// Output: "foxbrownquickThe"
+
+console.log(words.join(' '));   // Space separator
+// Output: "fox brown quick The"
+
+console.log(words.join('-'));   // Hyphen separator
+// Output: "fox-brown-quick-The"
+```
+
+The Famous Combo `split('').reverse().join('')` is the most common use case: reversing a string.
+
+Since strings are immutable (cannot be changed directly), you can't simply call .reverse() on them. This chain of methods provides a clever workaround:
+
+1. `split('')` convert the string into an array of individual characters.
+2. `reverse()` reverse the order of the elements in that array.
+3. `join('')` combine the reversed array back into a string.

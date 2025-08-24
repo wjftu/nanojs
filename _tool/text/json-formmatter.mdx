@@ -1,0 +1,31 @@
+---
+sidebar_position: 5
+---
+
+# Json Formatter
+
+JavaScript Json Prettifier
+
+
+
+import CommonTool from '@site/src/components/CommonTool';
+
+
+
+### Json Formatter
+
+<CommonTool
+  title="JSON Formatter"
+  actionLabel="Format"
+  process={(input) => JSON.stringify(JSON.parse(input), null, 2)}
+  placeholder="Enter Json string"
+/>
+
+
+### How it works 
+
+This tool parse Json string and use `JSON.stringify()` to format Json string 
+
+```js
+const json = JSON.stringify(JSON.parse(input), null, 2)
+```

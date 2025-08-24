@@ -1,0 +1,34 @@
+---
+sidebar_position: 4
+---
+
+# Url Decoder
+
+Decode Urlencoded String to normal text
+
+
+import CommonTool from '@site/src/components/CommonTool';
+
+
+
+### Url Decoder
+
+<CommonTool
+  title="URL Decoder"
+  actionLabel="Decode"
+  process={(input) => decodeURIComponent(input)}
+/>
+
+
+### How it works 
+
+This tool uses JavaScript functions `decodeURIComponent` to safely decode Url encoded text to a plain text
+
+```js
+const encoded = "plain%20text";
+const decoded = decodeURIComponent(text);
+console.log(decoded); // "plain text"
+```
+
+If any error occur, the tool will show error message
+
