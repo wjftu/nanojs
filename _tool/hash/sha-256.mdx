@@ -1,0 +1,52 @@
+---
+sidebar_position: 4
+---
+
+# SHA-256
+
+Convert text or file into a SHA-1 hash
+
+
+import HashGenerator from '@site/src/components/HashGenerator';
+
+<HashGenerator 
+  hashAlgorithm='SHA-256'
+/>
+
+### What is SHA-256
+
+SHA-256 (Secure Hash Algorithm 256)
+
+**Overview:**  
+SHA-256 is a cryptographic hash function and part of the SHA-2 family, published by NIST in 2001. It produces a longer, more secure digest than SHA-1 and is widely used in modern security applications.
+
+**Output Size:**  
+- Produces a 256-bit (32-byte) hash.  
+- Usually represented as a 64-character hexadecimal string.
+
+**Internal Structure:**  
+- Processes data in 512-bit blocks.  
+- Uses 64 rounds of operations per block.  
+- Maintains eight 32-bit words as its internal state.  
+- Operations include bitwise logical functions, modular addition, and circular shifts.  
+- Based on the Merkle–Damgård construction like SHA-1, but with enhanced security and complexity.
+
+**Cryptographic Properties:**  
+- Deterministic: the same input always produces the same output.  
+- Strong avalanche effect: tiny input changes result in drastically different output.  
+- One-way: infeasible to reverse the hash to recover the original input.  
+- Collision-resistant: no practical collisions are known; designed to withstand attacks up to 2^128 complexity.
+
+**Security:**  
+- Considered secure for digital signatures, TLS certificates, file integrity verification, and blockchain applications.  
+- Widely used in HMAC constructions for message authentication.
+
+**Performance:**  
+- Efficient on both 32-bit and 64-bit processors.  
+- Slightly slower than SHA-1 due to longer hash and more rounds, but much stronger security.
+
+**Common Use Cases:**  
+- TLS/SSL certificates and HTTPS connections.  
+- Cryptocurrencies and blockchain systems (e.g., Bitcoin uses double SHA-256).  
+- File integrity checks and digital signatures.  
+- HMAC for secure message authentication.

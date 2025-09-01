@@ -1,0 +1,59 @@
+---
+sidebar_position: 3
+---
+
+# SHA-1
+
+Convert text or file into a SHA-1 hash
+
+
+import HashGenerator from '@site/src/components/HashGenerator';
+
+<HashGenerator 
+  hashAlgorithm='SHA-1'
+/>
+
+### What is SHA-1
+
+**SHA-1 (Secure Hash Algorithm 1)**
+
+**Overview:**  
+SHA-1 is a cryptographic hash function designed by the NSA and published by NIST in 1995 (FIPS PUB 180-1) as part of the Digital Signature Standard. It was developed as an improvement over SHA-0.
+
+**Output Size:**  
+- Produces a 160-bit (20-byte) hash.  
+- Commonly represented as a 40-character hexadecimal string.
+
+**Internal Structure:**  
+- Based on the Merkle–Damgård construction.  
+- Processes input in 512-bit blocks.  
+- Uses a compression function with 80 rounds of operations.  
+- Maintains a 160-bit state divided into 5 words of 32 bits each.  
+- Operations include bitwise logical functions, modular addition, and circular shifts.
+
+**Cryptographic Properties:**  
+- Deterministic: same input → same output.  
+- Avalanche effect: small changes in input drastically change output.  
+- One-way: infeasible to reverse hash to recover input.  
+- Originally designed to be collision-resistant (~2^80 complexity).
+
+**Security History:**  
+- 2005: Theoretical collision attacks discovered.  
+- 2017: Practical collision demonstrated by Google and CWI Amsterdam (“SHAttered”).  
+- Currently considered broken for collision resistance and unsafe for cryptographic signatures.
+
+**Performance:**  
+- Fast on 32-bit and 64-bit CPUs.  
+- Historically favored in performance-sensitive applications.  
+- Faster than SHA-256 but much weaker in security.
+
+**Legacy Usage:**  
+- TLS/SSL certificates (deprecated since 2017).  
+- Code signing (Windows Update, Java JARs).  
+- Git object hashing (migration to SHA-256 recommended).  
+- Checksums for non-security file verification.
+
+**Why Avoid SHA-1 Today:**  
+- Collisions are computationally feasible.  
+- Not suitable for digital signatures, certificates, or secure integrity checks.  
+- Recommended alternatives: SHA-256, SHA-384, SHA-512.

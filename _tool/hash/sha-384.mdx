@@ -1,0 +1,51 @@
+---
+sidebar_position: 5
+---
+
+# SHA-384
+
+Convert text or file into a SHA-384 hash
+
+
+import HashGenerator from '@site/src/components/HashGenerator';
+
+<HashGenerator 
+  hashAlgorithm='SHA-384'
+/>
+
+### What is SHA-384
+
+
+**Overview:**  
+SHA-384 is a cryptographic hash function in the SHA-2 family, standardized by NIST in 2001. It is essentially SHA-512 with a different initial state and a truncated output of 384 bits, offering strong security with a slightly smaller digest.
+
+**Output Size:**  
+- Produces a 384-bit (48-byte) hash.  
+- Typically represented as a 96-character hexadecimal string.
+
+**Internal Structure:**  
+- Processes data in 1024-bit blocks (like SHA-512).  
+- Uses 80 rounds of operations per block.  
+- Maintains eight 64-bit words as its internal state.  
+- Operations include bitwise logical functions, modular addition, and circular shifts.  
+- Built on the Merkle–Damgård construction with SHA-512 internal design.
+
+**Cryptographic Properties:**  
+- Deterministic: same input → same output.  
+- Strong avalanche effect: small changes in input drastically alter output.  
+- One-way function: infeasible to reverse.  
+- Collision-resistant: no practical collisions known; more secure against collisions than SHA-256.
+
+**Security:**  
+- Provides a higher security margin than SHA-256 due to longer digest and larger internal state.  
+- Suitable for high-security applications requiring long digests.
+
+**Performance:**  
+- Slightly slower than SHA-256 on 32-bit CPUs but efficient on 64-bit processors.  
+- Shares the same structure as SHA-512, making it optimized for platforms supporting 64-bit arithmetic.
+
+**Common Use Cases:**  
+- High-security digital signatures.  
+- HMAC for secure message authentication in sensitive contexts.  
+- TLS/SSL configurations where longer digests are required.  
+- Any application requiring stronger collision resistance than SHA-256.
