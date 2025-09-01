@@ -1,41 +1,23 @@
-# Website
+Nano JS
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+A Website about JavaScript
 
-## Installation
+https://nanojs.net
 
-```bash
-yarn
-```
+### JavaScript Tools
 
-## Local Development
+https://nanojs.net/tool
 
-```bash
-yarn start
-```
+Explore simple, fast, and privacy-respecting tools built entirely in JavaScript. These tools run right in your browser. No sign-ups. No servers. Just utility.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+### JavaScript Tutorials
 
-## Build
+https://nanojs.net/javascript
 
-```bash
-yarn build
-```
+JavaScript tutorials for beginers, will walk you through the language from the ground up.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### Data Structures & Algorithms in JavaScript
 
-## Deployment
+https://nanojs.net/algorithm
 
-Using SSH:
-
-```bash
-USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Explained data structures and algorithms and problem solutions in JavaScript. 
