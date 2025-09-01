@@ -40,3 +40,13 @@ Send the encrypted message to the owner of the private key for decryption.
 - RSA 1024 → ~86 bytes max
 - RSA 2048 → ~214 bytes max
 - RSA 4096 → ~470 bytes max
+
+Normally, RSA is used to:
+
+Generate a random symmetric key (e.g., AES key).
+
+Encrypt the long message using AES (no length limits).
+
+Encrypt the AES key using RSA (small data).
+
+Send both the encrypted AES key and AES ciphertext to the recipient.

@@ -5,11 +5,8 @@ sidebar_position: 16
 # RSA Decryptor
 
 
-Use RSA public key to encrypt 
-
-RSAEncryptor is a lightweight React component that allows you to encrypt messages using an RSA public key (PEM format).
-It uses the browser's built-in Web Crypto API to ensure secure encryption without external libraries.
-
+RSADecryptor is a lightweight React component that allows you to decrypt messages encrypted with an RSA public key.
+It works in the browser using the built-in Web Crypto API and requires the corresponding private key in PEM format.
 
 
 import RSADecryptor from '@site/src/components/RSADecryptor';
@@ -23,15 +20,14 @@ import RSADecryptor from '@site/src/components/RSADecryptor';
 
 ### How to Use
 
-Obtain a valid RSA public key in PEM format (e.g., from the recipient who owns the private key).
+Obtain your RSA private key in PEM format (must match the public key used for encryption).
 
-Open the RSAEncryptor component in your app.
+Open the RSADecryptor component in your application.
 
-Paste the public key in the first text area.
+Paste your private key into the first text area.
 
-Type the message you want to encrypt in the second text area.
+Paste the encrypted message (Base64 string) into the second text area.
 
-Click Encrypt to generate a Base64-encoded encrypted message.
+Click Decrypt.
 
-Send the encrypted message to the owner of the private key for decryption.
-
+The original message will be displayed in the third text area.
