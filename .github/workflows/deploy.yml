@@ -51,6 +51,6 @@ jobs:
           # PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           PASSWORD: ${{ secrets.PASSWORD }}
           LOCAL_DIR: build
-          REMOTE_DIR: /var/www/nanojs
+          REMOTE_DIR: ${{ secrets.DIR }}
           CLEAN_REMOTE: true
           PORT: 22
