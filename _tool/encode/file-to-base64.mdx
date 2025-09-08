@@ -1,0 +1,32 @@
+---
+sidebar_position: 3
+---
+
+# File To Base64
+
+Convert File to Base64 text
+
+
+import FileToBase64 from '@site/src/components/FileToBase64';
+
+
+
+
+
+<FileToBase64 />
+
+### How to use 
+
+1. File Upload
+
+Select a file using the file input (e.g., .txt, .png, .pdf).
+
+The browser reads the file with the FileReader API.
+
+2. Conversion Process
+
+Click the button to convert file to base64 string.
+
+`FileReader.readAsDataURL(file)` converts the file into a Base64-encoded string.
+
+The string includes the MIME type and Base64 prefix:

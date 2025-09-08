@@ -1,0 +1,47 @@
+---
+sidebar_position: 4
+---
+
+# Base64 To File 
+
+Convert Base64 text to file
+
+
+import Base64ToFile from '@site/src/components/Base64ToFile';
+
+
+
+### Base64 Decoder
+
+<Base64ToFile />
+
+### How to use 
+
+1. Input File Name
+
+You can type a file name (e.g., report.pdf, image.png).
+
+If left blank, it defaults to output.txt.
+
+2. Paste Base64 String
+
+Enter a Base64 string in the textarea.
+
+Example:
+
+```
+bmFub2pzLm5ldA==
+```
+
+
+3. Convert & Download
+
+Click Convert & Download.
+
+The tool will:
+
+- Decode the Base64 string → binary data.
+- Wrap it in a Blob and create a File object.
+- Automatically generate a temporary download link.
+- Trigger the download instantly.
+
