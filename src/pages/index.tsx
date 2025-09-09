@@ -34,7 +34,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="A Website about JavaScript <head />">
+      description="Nano JS offers lightweight, browser-based JavaScript tools and JavaScript tutorials. No installation, no tracking, just fast, privacy-first utilities built entirely in your browser.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
