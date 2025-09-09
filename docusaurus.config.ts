@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Nano JS',
   tagline: 'Nano JS, dedicated to everything JavaScript',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -108,7 +108,7 @@ const config: Config = {
       title: 'Nano JS',
       logo: {
         alt: 'Nano JS',
-        src: 'img/favicon.ico',
+        src: 'favicon.ico',
       },
       items: [
 
