@@ -1,0 +1,56 @@
+---
+sidebar_position: 4
+---
+
+# Simple Calculator
+
+Input string expression and calculate the result.
+
+
+import CommonTool from '@site/src/components/CommonTool';
+
+
+
+### Url Decoder
+
+<CommonTool
+  title="URL Decoder"
+  actionLabel="Decode"
+  process={(input) => {
+    if (typeof input !== "string" || input.trim() === "") {
+      throw new Error("Input must be a non-empty string.");
+    }
+    try {
+      const result = new Function("return " + input)();
+      return result;
+    } catch (e) {
+      throw new Error("Invalid expression: " + e.message);
+    }
+  }}
+/>
+
+
+### How it works 
+
+This tool takes a string expression like "1+2*3". Wraps it into a function: `new Function("return " + input)`. Executes and returns the result.
+
+If the input is invalid, it throws an error.
+
+```js
+function runExpression(input) {
+  if (typeof input !== "string" || input.trim() === "") {
+    throw new Error("Input must be a non-empty string.");
+  }
+
+  try {
+    // Use Function constructor to safely evaluate
+    const result = new Function("return " + input)();
+    return result;
+  } catch (e) {
+    throw new Error("Invalid expression: " + e.message);
+  }
+}
+```
+
+If the input is invalid, it throws an error.
+
