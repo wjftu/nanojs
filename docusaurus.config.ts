@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Nano JS',
+  title: 'Nano JS - A Website about JavaScript',
   tagline: 'Nano JS, dedicated to everything JavaScript',
   favicon: 'favicon.ico',
 
