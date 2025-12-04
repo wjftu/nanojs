@@ -99,6 +99,15 @@ const config: Config = {
         sidebarPath: './sidebars.ts',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'react', 
+        path: '_react',
+        routeBasePath: 'react',
+        sidebarPath: './sidebars.ts',
+      },
+    ],
   ],
 
   themeConfig: {

@@ -46,6 +46,17 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
   },
+  {
+    title: 'React',
+    imgPath: '/img/react-ts.jpeg',
+    url: '/react',
+    description: (
+      <>
+        Learn React.js With TypeScript.
+        Famous open-source JavaScript library.
+      </>
+    ),
+  },
 ];
 
 function Feature({ title, description, url, imgPath }: FeatureItem) {
