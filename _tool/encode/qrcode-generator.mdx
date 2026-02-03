@@ -1,0 +1,116 @@
+---
+sidebar_position: 12
+---
+
+# QR Code Generator
+
+This tool helps you generate QR codes from text.
+
+Create scannable QR codes instantly — enter any text, URL, or data, and get a QR code you can scan with your phone. All processing happens in your browser with no data sent to any server.
+
+import QRCodeGenerator from '@site/src/components/QRCodeGenerator';
+
+## QR Code Generator
+
+<QRCodeGenerator />
+
+## How it works
+
+1. Enter the text, URL, or data you want to encode in the input field
+2. Click the "Generate QR Code" button
+3. A scannable QR code will appear below
+4. Scan it with your phone's camera or QR reader app
+
+## Features
+
+- Generates standard QR codes (ISO/IEC 18004 compliant)
+- High error correction level (H) for damaged/dirty codes
+- Adjustable size (currently 256×256 pixels)
+- Works with any text, URLs, or data
+- Pure client-side generation - no server involved
+- Instant generation with no delays
+
+## How to Use qrcode.react
+
+Here's a basic example of how to use the qrcode.react library:
+
+```jsx
+import React from 'react';
+import { QRCodeSVG } from 'qrcode.react';
+
+function BasicQRCodeExample() {
+  return (
+    <div>
+      <h2>Basic QR Code Example</h2>
+      <QRCodeSVG
+        value="https://example.com"
+        size={256}
+        bgColor="#ffffff"
+        fgColor="#000000"
+        level="H"
+      />
+    </div>
+  );
+}
+
+export default BasicQRCodeExample;
+```
+
+## Advanced Usage Example
+
+```jsx
+import React, { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
+
+function AdvancedQRCodeExample() {
+  const [text, setText] = useState('https://example.com');
+  const [size, setSize] = useState(256);
+
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <h2>Advanced QR Code Example</h2>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        style={{ padding: '8px', width: '300px', marginBottom: '16px' }}
+      />
+      <div>
+        <QRCodeSVG
+          value={text}
+          size={size}
+          bgColor="#ffffff"
+          fgColor="#000000"
+          level="H"
+          style={{ margin: '0 auto' }}
+        />
+      </div>
+      <div style={{ marginTop: '16px' }}>
+        <label>
+          Size: {size}px
+          <input
+            type="range"
+            min="100"
+            max="500"
+            value={size}
+            onChange={(e) => setSize(Number(e.target.value))}
+            style={{ width: '300px' }}
+          />
+        </label>
+      </div>
+    </div>
+  );
+}
+
+export default AdvancedQRCodeExample;
+```
+
+## Technical Details
+
+The QR code is generated using the [qrcode.react](https://www.npmjs.com/package/qrcode.react) library, which creates valid QR codes that work with all standard QR readers including phone cameras.
+
+The generated QR code uses:
+- Error correction level H (30% recovery)
+- White background with black modules
+- Standard quiet zone (margin)
+- SVG rendering for crisp display
