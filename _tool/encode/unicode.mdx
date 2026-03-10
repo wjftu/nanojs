@@ -1,0 +1,91 @@
+---
+sidebar_position: 7
+---
+
+# Unicode Decoder
+
+Decode Unicode to plain text
+
+
+import CommonTool from '@site/src/components/CommonTool';
+
+
+
+<CommonTool
+  title="Unicode to Text"
+  actionLabel="Decode"
+  process={(input) => {
+    const trimmed = input.trim();
+    if (/^\\u[0-9a-fA-F]{4}|\\u{[0-9a-fA-F]+}$/.test(trimmed)) {
+      return trimmed.replace(/\\u([0-9a-fA-F]{4}|{[0-9a-fA-F]+})/g, (_, code) => {
+        const hex = code.replace(/^{|}$/g, '');
+        return String.fromCharCode(parseInt(hex, 16));
+      });
+    }
+    if (/^&#x[0-9a-fA-F]+;$/.test(trimmed)) {
+      return trimmed.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => 
+        String.fromCharCode(parseInt(hex, 16))
+      );
+    }
+    if (/^&#[0-9]+;$/.test(trimmed)) {
+      return trimmed.replace(/&#[0-9]+;/g, (_, dec) => 
+        String.fromCharCode(parseInt(dec, 10))
+      );
+    }
+    return trimmed;
+  }}
+  placeholder="Enter Unicode (e.g., \u4e2d\u6587 or &#x4e2d;&#x6587;)..."
+/>
+
+
+### How it works 
+
+This tool converts Unicode encoded strings into plain text. It supports three common Unicode formats:
+
+- JavaScript escape format: `\u4e2d\u6587`
+- HTML hex format: `&#x4e2d;&#x6587;`
+- HTML decimal format: `&#20013;&#25991;`
+
+### Examples
+
+| Unicode | Text |
+|---------|------|
+| `\u4e2d\u6587` | 中文 |
+| `&#x4e2d;&#x6587;` | 中文 |
+| `&#20013;&#25991;` | 中文 |
+| `\u0041\u0042\u0043` | ABC |
+
+### JavaScript Code Explanation
+
+The conversion logic handles three Unicode formats:
+
+```javascript
+// 1. JavaScript escape format: \u4e2d\u6587
+const jsFormat = input.replace(/\\u([0-9a-fA-F]{4}|{[0-9a-fA-F]+})/g, (_, code) => {
+  const hex = code.replace(/^{|}$/g, '');
+  return String.fromCharCode(parseInt(hex, 16));
+});
+
+// 2. HTML hex format: &#x4e2d;&#x6587;
+const htmlHexFormat = input.replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => 
+  String.fromCharCode(parseInt(hex, 16))
+);
+
+// 3. HTML decimal format: &#20013;&#25991;
+const htmlDecFormat = input.replace(/&#[0-9]+;/g, (_, dec) => 
+  String.fromCharCode(parseInt(dec, 10))
+);
+```
+
+**How it works:**
+
+1. **Regex Matching**: Each format uses a regular expression to find Unicode sequences in the input string
+2. **Hex/Decimal Parsing**: `parseInt(hex, 16)` converts hexadecimal to decimal, `parseInt(dec, 10)` handles decimal
+3. **Character Conversion**: `String.fromCharCode(code)` converts the numeric code point to the actual character
+4. **Replacement**: The matched Unicode sequence is replaced with the decoded character
+
+**Key functions:**
+- `String.fromCharCode()` - converts Unicode code point to character
+- `parseInt(string, radix)` - parses string to integer in given base (16=hex, 10=decimal)
+- `RegExp` with capture groups - extracts the numeric code from each format
+
