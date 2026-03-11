@@ -1,0 +1,153 @@
+---
+sidebar_position: 3
+---
+
+# World Clock
+
+Display current time in all time zones around the world
+
+
+import WorldClock from '@site/src/components/WorldClock';
+
+
+<WorldClock />
+
+
+### How it works 
+
+This tool uses the native JavaScript `Intl` API to get all supported timezones and display their current local time.
+
+```javascript
+// Get all supported timezones
+const timeZones = Intl.supportedValuesOf('timeZone');
+
+// Get time for a specific timezone
+const timeString = new Date().toLocaleTimeString('en-US', {
+  timeZone: 'America/New_York',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+});
+```
+
+### Intl.supportedValuesOf() Explained
+
+`Intl.supportedValuesOf()` is a JavaScript method that returns an array of all supported values for a given locale option.
+
+```javascript
+// Available options:
+Intl.supportedValuesOf('timeZone');   // Returns all timezone names
+Intl.supportedValuesOf('locale');     // Returns all locale tags
+Intl.supportedValuesOf('calendar');   // Returns all calendars (gregory, chinese, etc.)
+Intl.supportedValuesOf('numberingSystem'); // Returns all number systems (arab, latn, etc.)
+```
+
+**Example output:**
+```javascript
+Intl.supportedValuesOf('timeZone');
+// ['Africa/Abidjan', 'Africa/Cairo', 'America/New_York', 'Asia/Shanghai', 'Europe/London', ...]
+```
+
+Why use IANA Timezone Names?
+
+IANA timezone names (e.g., `Asia/Shanghai`, `America/New_York`) are standardized identifiers that:
+- Uniquely identify a timezone's rules
+- Include historical timezone changes (DST, etc.)
+- Are supported by all modern browsers and Node.js
+
+**Common timezone prefixes:**
+- `Africa/` - African cities
+- `America/` - North & South American cities
+- `Asia/` - Asian cities
+- `Europe/` - European cities
+- `Pacific/` - Pacific Ocean cities
+- `Australia/` - Australian cities
+
+**Browser Compatibility**
+
+The `Intl.supportedValuesOf()` method is supported in:
+- Chrome 99+
+- Edge 99+
+- Safari 15.4+
+- Firefox 101+
+
+
+### Date Object Explained
+
+The `Date` object represents a single moment in time.
+
+```javascript
+// Create current time
+const now = new Date();
+
+// Get time in specific timezone
+now.toLocaleTimeString('en-US', {
+  timeZone: 'Asia/Tokyo',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false  // true = 12-hour, false = 24-hour
+});
+```
+
+**Key Date methods:**
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `new Date()` | Create current timestamp | `new Date()` |
+| `toLocaleTimeString()` | Format time for specific locale/timezone | Returns `"13:30:00"` |
+| `toLocaleDateString()` | Format date for specific locale/timezone | Returns `"Mar 12, 2026"` |
+| `getTime()` | Get milliseconds since epoch | Returns `1750000000000` |
+
+
+
+### How to Use
+
+Key Features
+
+- **All Timezones**: Displays all ~440 IANA timezones supported by your browser
+- **Real-time Updates**: Time updates every second automatically
+- **Searchable**: Filter timezones by region, country, or city name
+- **Date & Offset**: Shows local date and UTC offset for each timezone
+
+
+You can search by:
+
+| Search Type | Example | Result |
+|-------------|---------|--------|
+| **Region** | `Asia` | All Asian timezones (82 cities) |
+| **Region** | `Europe` | All European timezones |
+| **Region** | `America` | All American timezones |
+| **Country** | `China` | Shanghai, Hong Kong, Macau, Urumqi |
+| **Country** | `USA` | New York, Chicago, Los Angeles, Denver, etc. |
+| **City** | `London` | Europe/London |
+| **City** | `Tokyo` | Asia/Tokyo |
+| **City** | `New York` | America/New_York |
+
+Search Examples:
+
+- `Asia` → All timezones starting with `Asia/`
+- `China` → Chinese timezones (Shanghai, Hong Kong, Macau, Urumqi)
+- `London` → Europe/London
+- `York` → America/New_York, America/Yakutat
+
+### Browser Timezone Support
+
+Different browsers may support different numbers of timezones. The number depends on:
+
+- **Browser version**: Newer versions tend to support more timezones
+- **Operating System**: The browser uses the OS's timezone database (IANA tzdb)
+- **Browser engine**: Chrome, Firefox, Safari use different implementations
+
+**Approximate timezone counts by browser:**
+
+| Browser | Approximate Timezones |
+|---------|---------------------|
+| Chrome 120+ | ~440 |
+| Firefox 120+ | ~430 |
+| Safari 17+ | ~420 |
+| Edge 120+ | ~440 |
+
+The tool displays your browser's actual supported count at the top of the page.
+
