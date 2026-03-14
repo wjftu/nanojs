@@ -1,0 +1,41 @@
+---
+sidebar_position: 1
+---
+
+# Dice Roller
+
+Roll a virtual D6 dice with visual display and rolling animation
+
+
+import DiceRoller from '@site/src/components/DiceRoller';
+
+
+<DiceRoller />
+
+
+### How it works
+
+This tool uses JavaScript's `Math.random()` function to generate random numbers for dice rolls.
+
+```javascript
+// Roll a dice
+const roll = Math.floor(Math.random() * 6) + 1;
+// Math.random() returns 0 to 0.999...
+// Multiply by 6 (for D6)
+// floor() rounds down to get 0-5
+// Add 1 to get 1-6
+```
+
+### Features
+
+- **D6 dice**: Standard six-sided dice
+- **Multiple dice**: Roll up to 10 dice at once
+- **Rolling animation**: Dice rapidly changes for 1 second to show rolling effect
+- **Visual display**: Dice face with dot pattern
+- **Total sum**: Shows the sum of all dice rolled
+
+### Common Uses
+
+- **Board games**: Replace physical dice
+- **Decision making**: Random selection tool
+- **Education**: Probability lessons, math games
