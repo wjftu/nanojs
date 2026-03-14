@@ -1,0 +1,88 @@
+---
+sidebar_position: 4
+---
+
+# Simple Sic Bo
+
+A simplified Sic Bo game where you can set your win rate
+
+
+import SimpleSicBo from '@site/src/components/SimpleSicBo';
+
+
+<SimpleSicBo />
+
+
+### How to Play
+
+1. **Set Win Rate**: Enter your desired win percentage (0-100%) and click "Set"
+2. **Place Bet**: Click "Small" or "Big" to bet $100
+3. **Roll Dice**: Click "Roll Dice" to play
+4. **Collect Winnings**: If you win, you get your bet back plus equal amount
+5. **View History**: All game results are recorded
+
+**Rules**
+
+- **Small**: Wins if total is 3-10 (excludes triples)
+- **Big**: Wins if total is 11-18 (excludes triples)
+- **Payout**: 1:1 (you win the same amount as your bet)
+- **Chip**: $100 per bet
+- **Initial Balance**: $1,000
+
+### ⚠️ Important Notice
+
+This tool is for **educational purposes only** to help you understand how online gambling works:
+
+- **Win Rate Control**: Some online casinos or gambling platforms may control your win rate. This tool simulates that behavior.
+- **Monitor Fairness**: You can use this to understand if a game is treating you fairly or unfairly.
+- **You Will Lose**: In real gambling, the house always wins in the long run. No matter what win rate is set, you will eventually lose all your money.
+- **Online Gambling is Dangerous**: This is a simulation - never gamble with real money. Gambling addiction is a serious issue.
+
+**Remember**: The house always wins. This tool demonstrates why.
+
+### How Online Gambling Controls Win Rate
+
+Online gambling is lack of transparency. Online platforms can easily control win rates using simple code. 
+
+Here is an example:
+
+```javascript
+const rollDice = () => {
+  // Decide if user wins BEFORE rolling
+  const shouldWin = Math.random() * 100 < winRate;
+  
+  let finalDice;
+  
+  // Generate dice based on the decision
+  if (shouldWin) {
+    if (userBetType === 'small') {
+      finalDice = generateSmall(true);  // sum 3-10
+    } else {
+      finalDice = generateBig(true);    // sum 11-18
+    }
+  } else {
+    // Generate losing result
+    if (userBetType === 'small') {
+      finalDice = generateBig(false);   // sum 11-18
+    } else {
+      finalDice = generateSmall(false); // sum 3-10
+    }
+  }
+};
+```
+
+### How Online Gambling Platforms Maximize Profit
+
+Online gambling platforms are designed to generate profit over time. Even if a platform can influence the win rate, the most effective strategy is not making players lose immediately, but keeping them engaged long enough to spend more money. Several common techniques are used to achieve this goal.
+
+One common approach is allowing players to win early. When new users join a platform, they may experience small wins at the beginning. These early successes create excitement and build trust in the platform. Players begin to believe they are lucky or skilled, which often encourages them to place larger bets later. Over time, as the player continues betting, the statistical advantage of the platform gradually leads to losses.
+
+Another strategy is gradually increasing the loss rate rather than causing sudden large losses. If players lose too quickly, they may leave the platform. By slowly adjusting the odds, players remain hopeful that they will win again. This extended playtime results in a higher total amount of money wagered.
+
+Online gambling games also frequently use near-miss effects. For example, a slot machine may show two jackpot symbols and a third symbol just slightly above or below the winning line. These “almost winning” situations create strong psychological motivation to continue playing, as players feel they are close to a big win.
+
+Platforms also focus on high-spending users, sometimes called “whales.” These players contribute a large portion of total revenue. Gambling sites may offer them special bonuses, VIP programs, or temporary rewards to keep them active and betting.
+
+Another common method involves bonus systems with wagering requirements. A player may receive a bonus when depositing money, but the platform requires them to place bets many times the bonus amount before they can withdraw. Statistically, many players lose their balance before meeting the requirement.
+
+Ultimately, the core strategy of online gambling platforms is simple: encourage players to continue betting for as long as possible. Since every game is designed with a built-in advantage for the platform, the longer players stay and the more bets they place, the more profit the platform can generate over time.

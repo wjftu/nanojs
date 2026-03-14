@@ -1,0 +1,117 @@
+---
+sidebar_position: 5
+---
+
+# 24 Point Solver
+
+Enter 4 numbers to find a solution that equals 24
+
+
+import TwentyFourPoint from '@site/src/components/TwentyFourPoint';
+
+
+<TwentyFourPoint />
+
+### How to use
+
+Input 4 numbers(space or comma separated) , click the button, will output one answer. 
+
+If no answer found, will output: No solution found
+
+### What is 24 Point
+
+24 Game (also known as 24 Point Game) is a classic arithmetic card game designed to practice mental math and fast calculation skills. The goal is to use four given numbers and basic arithmetic operations to achieve a total of 24.
+
+**Rules**
+
+- Use all 4 numbers exactly once
+- Allowed operators: addition (+), subtraction (-), multiplication (×), division (÷)
+- You can use parentheses to change operation order
+- Each number can only be used once
+
+**Tips**
+
+- Try to think of ways to create numbers like 8×3, 12×2, 6×4, etc.
+- Division can create fractions that might be useful
+- Example: 5 × (5 - 1/5) = 24 uses 5, 5, 5, and 1
+
+For example , for number 1 2 3 4 , this is one answer:  (1 + 2 + 3) × 4 = 24
+
+### Algorithm
+
+This solver tries all possible combinations using brute force:
+
+1. **Generate all permutations**: 4! = 24 ways to arrange the 4 numbers
+2. **Try all operators**: 4³ = 64 combinations (each of 3 positions can be +, -, ×, ÷)
+3. **Try all parenthesizations**: 5 different ways to group operations
+4. **Evaluate and check**: If result equals 24, return the solution
+
+Total combinations: 24 × 64 × 5 = 7,680
+
+The solver stops at the first valid solution found.
+
+**Parenthesization Examples**
+
+For numbers a, b, c, d with operators op1, op2, op3:
+
+| # | Pattern | Example |
+|---|---------|---------|
+| 1 | `((a op1 b) op2 c) op3 d` | `((3 + 3) × 4) - 0` |
+| 2 | `(a op1 (b op2 c)) op3 d` | `(3 + (3 × 4)) + 6` |
+| 3 | `a op1 ((b op2 c) op3 d)` | `3 + ((4 × 5) + 6)` |
+| 4 | `a op1 (b op2 (c op3 d))` | `3 + (4 × (5 + 6))` |
+| 5 | `(a op1 b) op2 (c op3 d)` | `(3 + 3) × (8 - 0)` |
+
+**Code Example**
+
+```javascript
+// Step 1: Generate all permutations
+function permute(arr) {
+  if (arr.length <= 1) return [arr];
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    const rest = arr.slice();
+    rest.splice(i, 1);
+    const perms = permute(rest);
+    for (const p of perms) {
+      result.push([arr[i], ...p]);
+    }
+  }
+  return result;
+}
+
+// Step 2: Apply operator
+function applyOp(a, b, op) {
+  switch (op) {
+    case '+': return a + b;
+    case '-': return a - b;
+    case '*': return a * b;
+    case '/': return b !== 0 ? a / b : null;
+  }
+}
+
+// Step 3: Try all combinations
+function solve24(nums) {
+  const operators = ['+', '-', '*', '/'];
+  const perms = permute(nums);
+  
+  for (const [a, b, c, d] of perms) {
+    for (const op1 of operators) {
+      for (const op2 of operators) {
+        for (const op3 of operators) {
+          // Try each parenthesization pattern
+          // ((a op1 b) op2 c) op3 d
+          let r1 = applyOp(a, b, op1);
+          let r2 = applyOp(r1, c, op2);
+          let r3 = applyOp(r2, d, op3);
+          if (r3 === 24) return `(${a} ${op1} ${b}) ${op2} ${c}) ${op3} ${d}`;
+          
+          // ... try other patterns
+        }
+      }
+    }
+  }
+  return null;
+}
+```
+
