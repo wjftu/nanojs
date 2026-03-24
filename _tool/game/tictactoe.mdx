@@ -1,0 +1,132 @@
+---
+sidebar_position: 6
+---
+
+# Tic-Tac-Toe
+
+Classic two-player Tic-Tac-Toe game
+
+
+import TicTacToe from '@site/src/components/TicTacToe';
+
+
+<TicTacToe />
+
+
+### Introduction
+
+Tic-Tac-Toe (also called noughts and crosses) is a classic two-player game where players take turns marking spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
+
+**Rules:**
+
+- Players take turns (X always goes first)
+- A player wins by placing three of their marks in a horizontal, vertical, or diagonal row
+- The game ends when a player wins or all nine squares are filled (draw)
+- Click "New Game" to start over after the game ends
+
+### How to Play
+
+1. **Two Players**: Player X goes first, followed by Player O
+2. **Take Turns**: Players alternate clicking on empty cells to place their mark
+3. **Win**: First player to get three marks in a row wins
+4. **Draw**: If all nine cells are filled with no winner, the game is a draw
+
+
+
+
+### How JavaScript Works
+
+
+Winning Combinations
+
+There are 8 possible winning combinations:
+
+| # | Cells | Direction |
+|---|-------|-----------|
+| 1 | [0, 1, 2] | Top row |
+| 2 | [3, 4, 5] | Middle row |
+| 3 | [6, 7, 8] | Bottom row |
+| 4 | [0, 3, 6] | Left column |
+| 5 | [1, 4, 7] | Middle column |
+| 6 | [2, 5, 8] | Right column |
+| 7 | [0, 4, 8] | Diagonal (top-left to bottom-right) |
+| 8 | [2, 4, 6] | Anti-diagonal (top-right to bottom-left) |
+
+1. State Management
+
+```javascript
+const [board, setBoard] = useState(Array(9).fill(null));
+const [xIsNext, setXIsNext] = useState(true);
+```
+
+- `board`: Array of 9 cells, each can be 'X', 'O', or null
+- `xIsNext`: Boolean to track whose turn it is
+
+2. Board Initialization
+
+```javascript
+Array(9).fill(null)
+// Creates: [null, null, null, null, null, null, null, null, null]
+
+// Cell indices:
+// 0 | 1 | 2
+// 3 | 4 | 5
+// 6 | 7 | 8
+```
+
+3. Making a Move
+
+```javascript
+const handleClick = (index) => {
+  // Create new board with the current player's mark
+  const newBoard = board.map((cell, i) => 
+    i === index ? (xIsNext ? 'X' : 'O') : cell
+  );
+  setBoard(newBoard);
+  setXIsNext(!xIsNext);
+};
+```
+
+Using `map()` to create a new array (immutability).
+
+4. Checking for Winner
+
+```javascript
+const winPatterns = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
+  [0, 4, 8], [2, 4, 6]              // Diagonals
+];
+
+const winner = winPatterns.some(([a, b, c]) =>
+  board[a] && board[a] === board[b] && board[a] === board[c]
+);
+```
+
+Using `some()` to check if any winning pattern exists.
+
+5. Checking for Draw
+
+```javascript
+const isDraw = !winner && board.every(cell => cell !== null);
+```
+
+Using `every()` to check if all cells are filled.
+
+6. Dynamic Border Styling
+
+```javascript
+const getCellBorders = (index) => {
+  const row = Math.floor(index / 3);
+  const col = index % 3;
+  
+  return {
+    borderTop: row > 0 ? '2px solid #e2e8f0' : 'none',
+    borderBottom: row < 2 ? '2px solid #e2e8f0' : 'none',
+    borderLeft: col > 0 ? '2px solid #e2e8f0' : 'none',
+    borderRight: col < 2 ? '2px solid #e2e8f0' : 'none',
+  };
+};
+```
+
+Using `Math.floor()` and modulo to calculate grid position.
