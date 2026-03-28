@@ -78,7 +78,7 @@ const config: Config = {
       {
         id: 'tool', 
         path: '_tool',
-        routeBasePath: 'tool',
+        routeBasePath: 'tool/',
         sidebarPath: './sidebars.ts',
       },
     ],
@@ -87,7 +87,7 @@ const config: Config = {
       {
         id: 'algorithm', 
         path: '_algorithm',
-        routeBasePath: 'algorithm',
+        routeBasePath: 'algorithm/',
         sidebarPath: './sidebars.ts',
       },
     ],
@@ -96,7 +96,7 @@ const config: Config = {
       {
         id: 'javascript', 
         path: '_javascript',
-        routeBasePath: 'javascript',
+        routeBasePath: 'javascript/',
         sidebarPath: './sidebars.ts',
       },
     ],
@@ -105,7 +105,7 @@ const config: Config = {
       {
         id: 'react', 
         path: '_react',
-        routeBasePath: 'react',
+        routeBasePath: 'react/',
         sidebarPath: './sidebars.ts',
       },
     ],
