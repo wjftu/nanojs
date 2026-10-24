@@ -1,0 +1,40 @@
+---
+sidebar_position: 10
+---
+
+# Regex Matcher
+
+Extract all matched text from a large block of text with a regular expression.
+
+
+
+import RegexMatcher from '@site/src/components/RegexMatcher';
+
+
+
+### Regex Matcher
+
+<RegexMatcher title="Regex Matcher" />
+
+
+
+
+### How it works
+
+The regex is compiled with the global (`g`) flag, so every occurrence in the text is collected:
+
+```js
+const re = new RegExp(pattern, "g");
+const list = [];
+let m;
+while ((m = re.exec(text)) !== null) {
+  list.push(m[0]);
+  if (m[0] === "") re.lastIndex++;
+}
+```
+
+`RegExp.prototype.exec()` keeps an internal `lastIndex` position and returns the next match each time it is called, so looping over it walks through the whole string.
+
+The `if (m[0] === "") re.lastIndex++` line guards against zero-length matches (for example the pattern `a*`): without it, `exec()` would keep returning an empty match at the same position forever and the loop would never end.
+
+Invalid patterns are caught with `try/catch` and the error message is shown instead of breaking the page.
